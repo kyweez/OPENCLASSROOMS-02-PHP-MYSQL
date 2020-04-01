@@ -26,7 +26,7 @@
     {
     ?>
         <header>
-            <h1>Welcome <?php htmlspecialchars($_POST['name']) ?></h1>
+            <h1>Welcome <?php echo htmlspecialchars($_POST['name']) ?></h1>
         </header>
     <?php
     }
@@ -89,11 +89,11 @@
         else
         {
             ?>
-            //Insertion of a windows.alert en JS
+            <!--Insertion of a windows.alert (JS)-->
             <script>
                 alert("Please fill out the entire form.");
             </script>
-            //Reload the index.php page
+            <!--Reload the index.php page-->
             <script>
                 location.assign("index.php");
             </script>

@@ -72,7 +72,7 @@
         }
         else
         {
-            //Insertion of a windows.alert en JS
+            //Insertion of a windows.alert (JS)
             echo '<script>alert("Please fill out the entire form.");</script>';
             //Reload the index.php page
             echo '<script>location.assign("index.php");</script>';
