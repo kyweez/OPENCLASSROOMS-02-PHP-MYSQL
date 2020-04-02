@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="styles.css" rel="stylesheet">
+    <link href="styles_index.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel="stylesheet">
     <title>Travel Agency</title>
 </head>
@@ -84,11 +84,11 @@
                 chacune de vos attentes pour vous aider dans la préparation de votre séjour, circuit ou voyage sur
                 mesure.</p>
 
-            <form action="#" method="GET" onsubmit="return form_validated()">
+            <form action="resultat.php" method="POST">
                 <label for="name">Nom</label>
-                <input type="text" id="name" placeholder="Votre nom">
+                <input type="text" id="name" placeholder="Votre nom" name="name">
                 <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Votre email">
+                <input type="text" id="email" placeholder="Votre email" name="email">
                 <input type="submit" value="OK" class="button-3">
             </form>
         </div>

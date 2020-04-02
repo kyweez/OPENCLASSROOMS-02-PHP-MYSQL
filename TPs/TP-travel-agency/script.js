@@ -72,16 +72,3 @@ function activate_button() {
 //Appel de la fonction en cas de remplissage
 name_field.addEventListener("keyup", activate_button);
 mail_field.addEventListener("keyup", activate_button);
-
-/*################## AFFICHAGE ET ACTIONS POST-VALIDATION ##################*/
-//Selection de form
-var form = document.querySelector("form");
-//Ajout de l'attribut on
-function form_validated(page) {
-    alert("Merci. Nous vous recontacterons des que possible!");
-    var contact_title = document.querySelector("h3");
-    var replace_text = document.createTextNode("Déjà contacté");
-    contact_title.replaceChild(replace_text, contact_title.firstChild);
-    contact_title.style.color = "red";
-    form.parentNode.removeChild(form);
-}
