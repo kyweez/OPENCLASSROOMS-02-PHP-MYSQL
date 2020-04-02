@@ -6,6 +6,11 @@
     <link href="styles_index.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel="stylesheet">
     <title>Travel Agency</title>
+    <?php
+        if (isset($_GET['alreadyContacted']) and $_GET['alreadyContacted'] == 'yes') {
+            echo '<link href="styles_already_contacted.css" rel="stylesheet">';
+        }
+    ?>
 </head>
 
 <body>
@@ -77,21 +82,49 @@
     </section>
 
     <section id="contact">
-        <div class="wrapper">
-            <h3>Contactez-nous</h3>
-            <p>Chez Travel Agency nous savons que voyager est une aventure humaine mais également un engagement
-                financier important pour vous. C'est pourquoi nous mettons un point d'honneur à prendre en compte
-                chacune de vos attentes pour vous aider dans la préparation de votre séjour, circuit ou voyage sur
-                mesure.</p>
+        <?php
+        if (isset($_GET['alreadyContacted']) and $_GET['alreadyContacted'] == 'yes') {
+        ?>
+            <div class="wrapper" id="newContact">
+                <h3>Votre demande de contact a déjà été prise en compte.</h3>
+                <p>
+                    Nous traitons au mieux votre demande et nous nous efforçons de répondre au plus tard sous 24h.<br>
+                    Avez-vous pensé à consulter <a id="offre" href="#possibilities">nos offres commerciales</a> ?
 
-            <form action="resultat.php" method="POST">
-                <label for="name">Nom</label>
-                <input type="text" id="name" placeholder="Votre nom" name="name">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Votre email" name="email">
-                <input type="submit" value="OK" class="button-3">
-            </form>
-        </div>
+                </p>
+                <form action="resultat.php" method="POST">
+                    <fieldset style="border:none;" disabled="disabled">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" placeholder="Votre nom" name="name">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" placeholder="Votre email" name="email">
+                        <input type="submit" value="OK" class="button-3">
+                    </fieldset>
+                </form>
+            </div>
+        <?php
+        } else {
+        ?>
+            <div class="wrapper">
+                <h3>Contactez-nous</h3>
+                <p>
+                    Chez Travel Agency nous savons que voyager est une aventure humaine mais également un engagement
+                    financier important pour vous. C'est pourquoi nous mettons un point d'honneur à prendre en compte
+                    chacune de vos attentes pour vous aider dans la préparation de votre séjour, circuit ou voyage sur
+                    mesure.
+                </p>
+
+                <form action="resultat.php" method="POST">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" placeholder="Votre nom" name="name">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Votre email" name="email">
+                    <input type="submit" value="OK" class="button-3">
+                </form>
+            </div>
+        <?php
+        }
+        ?>
     </section>
 
     <footer>
@@ -100,7 +133,7 @@
             <div class="copyright">Copyright © Tous droits réservés.</div>
         </div>
     </footer>
-    
+
     <script src="script.js"></script>
 
 </body>

@@ -1,0 +1,13 @@
+#contact h3{
+    font-size: 1.7em;
+    width: 100%;
+    color: maroon;
+}
+#contact p{
+    height: 60px;
+    line-height: 2em;
+}
+#offre{
+    font-weight: bold;
+    color: teal;
+}

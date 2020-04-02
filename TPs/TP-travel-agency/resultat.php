@@ -14,23 +14,26 @@
             <h1>Travel Agency<span class="orange">.</span></h1>
             <nav>
                 <ul>
-                    <li><a href="index.php/#main-image">Accueil</a></li>
-                    <li><a href="index.php/#steps">Destinations</a></li>
-                    <li><a href="index.php/#possibilities">Circuits</a></li>
-                    <li><a href="index.php/#contact">Contact</a></li>
+                    <li><a href="./index.php">Accueil</a></li>
+                    <li><a href="./index.php/?alreadyContacted=yes#steps">Destinations</a></li>
+                    <li><a href="./index.php/?alreadyContacted=yes#possibilities">Circuits</a></li>
+                    <li><a href="./index.php/?alreadyContacted=yes#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-
     <section id="contact">
         <div class="wrapper">
-            <h2>Bonjour Mme / Mr <?php echo htmlspecialchars($_POST['name']); ?></h2>
-            <p>
-                Merci pour votre confiance ! Votre demande de contact nous a été transmise. Nous vous recontacterons au plus vite à l'adresse ci-dessous.
-                <?php echo htmlspecialchars($_POST['email']); ?>
-            </p>
+            <h2>Bonjour Mme / Mr <?php echo '<span id="nameInput">' . htmlspecialchars($_POST['name']) . '</span>'; ?></h2>
+            <div>
+                <p>
+                    Merci pour votre confiance ! Votre demande de contact nous a été transmise.<br>Nous vous recontacterons au plus vite à l'adresse ci-dessous.
+                </p>
+                <?php echo '<p style="font-weight:bold; height: 50px;">' . htmlspecialchars($_POST['email']) . '</p>'; ?>
+                <a href="index.php?alreadyContacted=yes">Cliquez ici pour revenir sur la page principale</a>
+            </div>
+            <a href="index.php?alreadyContacted=yes"><img src="https://pngimage.net/wp-content/uploads/2018/05/bonnes-vacances-png-8.png" alt="Image Vacances"></a>
         </div>
     </section>
 
