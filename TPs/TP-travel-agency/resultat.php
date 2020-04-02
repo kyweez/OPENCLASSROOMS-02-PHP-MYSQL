@@ -26,7 +26,7 @@
 
     <section id="contact">
         <div class="wrapper">
-            <h2>Bonjour Mme/Mr <?php echo htmlspecialchars($_POST['name']); ?></h2>
+            <h2>Bonjour Mme / Mr <?php echo htmlspecialchars($_POST['name']); ?></h2>
             <p>
                 Merci pour votre confiance ! Votre demande de contact nous a été transmise. Nous vous recontacterons au plus vite à l'adresse ci-dessous.
                 <?php echo htmlspecialchars($_POST['email']); ?>
