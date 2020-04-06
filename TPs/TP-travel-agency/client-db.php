@@ -27,11 +27,11 @@
         echo '<footer><div><h1>Travel Agency<span class="orange">.</span></h1><div class="copyright">Copyright © Tous droits réservés.</div></div></footer>';
     }
 
-    function connect_travel_agency_db(){
+    function connect_travel_agency_db()
+    {
         try {
             return (new PDO('mysql:host=localhost;dbname=travel_agency;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)));
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
             return (NULL);
         }
@@ -47,17 +47,50 @@
                 $pwd = $_POST['password'];
                 $dataBase = connect_travel_agency_db();
                 $request = $dataBase->prepare('SELECT * FROM admin_list WHERE pseudo = ? AND pwd = ?');
-                $request->execute(array($_POST['id'], $_POST['password']));
-                if ($data = $request -> fetch()){
-                    echo '<br>PSEUDO : '. $data['pseudo'];
-                    echo '<br>Password : '. $data['pwd'];
+                $request->execute(array($pseudo, $pwd));
+                if ($data = $request->fetch()) {
+                    print_html_header('Panneau de contrôle');
+                    ?>
+                    <section>
+                        <div id="header-div">
+                            <p>Connecté sur le compte : <strong><?php echo htmlspecialchars($pseudo) ?></strong></p>
+                            <p><a href="admin-access.php">Déconnexion</a></p>
+                        </div>
+                        <?php
+                        if ($pseudo == 'admin') {
+                        ?>
+                            <div>
+                                <h2>Liste des administrateurs</h2>
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Pseudo</th>
+                                            <th>Dernière connexion</th>
+                                        </tr>
+                                        <?php
+                                        while ($data1 = $request->fetch()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $data1['id']; ?></td>
+                                            <td><?php echo $data1['pseudo']; ?></td>
+                                            <td><?php echo $data1['last_connection']; ?></td>
+                                        </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </table>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </section>
+                <?php
+                } else {
+                    print_html_header('Accès administrateur');
+                    print_html_section('Mauvais identifiant ou password', true);
                 }
-                else{
-                    echo 'MERDE';
-                }
-
-
-                print_html_header('Panneau de contrôle');
             }
             //Sinon on affiche quelle valeur est vide (si les 2 le sont, par defaut on demande l'identifiant)
             else {
@@ -68,7 +101,7 @@
         //Sinon on affiche quelle case du $_POST n'est pas definie
         else {
             print_html_header('Accès administrateur');
-            print_html_section('$_POST[' . htmlspecialchars(isset($_POST['id']) ? 'password' : 'id') . '] n\'est pas définie', true);//On protege la faille XSS
+            print_html_section('$_POST[' . htmlspecialchars(isset($_POST['id']) ? 'password' : 'id') . '] n\'est pas définie', true); //On protege la faille XSS
         }
     }
     //Sinon on affiche une page d'erreur qui precise que $_POST n'est pas definie
@@ -76,40 +109,8 @@
         print_html_header('Accès administrateur');
         print_html_section('La superglobale $_POST n\'est pas definie', true);
     }
-    /*
-        $dbAdministrator = PDO()
-        if (isset($_POST['id']) and $_POST['id']=='admin'){
-            ?>
-                <section>
-                    <div >
-                        <h2>Liste des personnes à contacter</h2>
-                        <div>
-
-                        </div>
-                        <a href="index.php">Revenir à l'accueil</a>
-                    </div>
-                </section>
-
-                <footer>
-                    <div>
-                        <h1>Travel Agency<span class="orange">.</span></h1>
-                        <div class="copyright">Copyright © Tous droits réservés.</div>
-                    </div>
-                </footer>
-            <?php
-        }
-        else{
-            ?>
-                <p>Mauvais identifiants</p>
-                <?php echo $_POST['id'];?>
-            <?php
-        }
-        */
     print_html_footer();
-
     ?>
-
-
 </body>
 
 </html>
