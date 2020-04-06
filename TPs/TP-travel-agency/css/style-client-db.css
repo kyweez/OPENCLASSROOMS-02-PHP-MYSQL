@@ -109,3 +109,8 @@ footer h1{
 footer>div>div{
     height: 5vh;
 }
+#error-section{
+    color: firebrick;
+    font-size: 300%;
+    font-weight: bold;
+}

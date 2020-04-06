@@ -10,29 +10,21 @@
 
 <body>
     <header>
-        <div class="wrapper">
-            <h1>Travel Agency<span class="orange">.</span></h1>
-            <nav>
-                <ul>
-                    <li><a href="./index.php">Accueil</a></li>
-                    <li><a href="./index.php/#steps">Destinations</a></li>
-                    <li><a href="./index.php/#possibilities">Circuits</a></li>
-                    <li><a href="./index.php/#contact">Contact</a></li>
-                </ul>
-            </nav>
+        <div>
+            <h1>Accès administrateur</h1>
         </div>
     </header>
 
-    <section id="contact">
-        <div class="wrapper">
-            <h2>Accès administrateur. Saisissez vos identifiants :</h2>
+    <section>
+        <div >
+            <h2>Saisissez vos identifiants</h2>
             <div>
-                <form action="bdd-demande-contact.php" method="POST">
-                    <p><label for="">Identifiant</label></p>
-                    <p><input type="text" placeholder="Saisissez votre identifiant"></p>
-                    <p><label for="">Password</label></p>
-                    <p><input type="password" placeholder="Saisissez votre password"></p>
-                    <p><input type="submit" value="Valider"></p>
+                <form action="client-db.php" method="POST">
+                    <p><label for="id">Identifiant</label></p>
+                    <p><input type="text"  name="id" id="id" placeholder="Saisissez votre identifiant"></p>
+                    <p><label for="password">Password</label></p>
+                    <p><input type="password" name="password" id="password" placeholder="Saisissez votre password"></p>
+                    <p id="submit-button"><input type="submit" value="Valider"></p>
                 </form>
             </div>
             <a href="index.php">Revenir à l'accueil</a>
@@ -40,13 +32,13 @@
     </section>
 
     <footer>
-        <div class="wrapper">
+        <div>
             <h1>Travel Agency<span class="orange">.</span></h1>
             <div class="copyright">Copyright © Tous droits réservés.</div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!--<script src="./scripts/form-control-admin.js"></script>-->
 
 </body>
 

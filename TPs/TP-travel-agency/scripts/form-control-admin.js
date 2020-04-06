@@ -17,12 +17,12 @@ add_red_star(label[1]);
 //Creation d'un tableau d'input
 var tab_input = document.getElementsByTagName("input");
 //Attribution de noms aux differents inputs
-var name_field = tab_input[0];
-var mail_field = tab_input[1];
+var id_field = tab_input[0];
+var password_field = tab_input[1];
 var button = tab_input[2];
 //Ajout de l'attribut 'required' dans les inputs du html afin de ne pas etre en mesure de valider le formulaire le cas echeant
-name_field.required = true;
-mail_field.required = true;
+id_field.required = true;
+password_field.required = true;
 //Desactivation du bouton submit
 button.disabled = true;
 if (button.disabled == true) {
@@ -42,24 +42,14 @@ function is_filled(field) {
         return true;
     }
 }
-//Fonction de verification du format de mail
-function check_mail(field) {
-    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; //EXPLICATION DE LA REGEX EN BAS DE DOCUMENT
-    if (regex.test(field.value)) //On verifie que la value du champs email corresponde bien a la Regex
-        return true;
-    else {
-        field.style.borderColor = "red"; //Ajout d'une bordure de couleur pour guider l'utilisateur
-        return false;
-    }
-}
 //Fonction de reactivation du boutton
 function activate_button() {
-    if (is_filled(name_field) && is_filled(mail_field) && check_mail(mail_field)) {
+    if (is_filled(id_field) && is_filled(password_field)) {
         button.disabled = false;
         button.style.backgroundColor = "#02b8dd";
         button.style.color = "#fff;"
-        button.onmouseenter = function () { this.style.backgroundColor = "#444"; }
-        button.onmouseleave = function () { this.style.backgroundColor = "#02b8dd"; }
+        button.onmouseenter = function () { this.style.backgroundColor = "#444"; this.style.color = "white";}
+        button.onmouseleave = function () { this.style.backgroundColor = "#02b8dd"; this.style.color = "#fff";}
     }
     else {
         button.disabled = true;
@@ -70,5 +60,5 @@ function activate_button() {
     }
 }
 //Appel de la fonction en cas de remplissage
-name_field.addEventListener("keyup", activate_button);
-mail_field.addEventListener("keyup", activate_button);
+id_field.addEventListener("keyup", activate_button);
+password_field.addEventListener("keyup", activate_button);
