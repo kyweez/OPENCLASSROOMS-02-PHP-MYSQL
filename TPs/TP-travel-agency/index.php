@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="styles_index.css" rel="stylesheet">
+    <link href="./css/style-index.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel="stylesheet">
     <title>Travel Agency</title>
     <?php
     if (isset($_GET['alreadyContacted']) and $_GET['alreadyContacted'] == 'yes') {
-        echo '<link href="styles_already_contacted.css" rel="stylesheet">';
+        echo '<link href="./css/style-already-contacted.css" rel="stylesheet">';
     }
     ?>
 </head>
 
 <body>
     <header>
-        <div class="wrapper">
+        <div>
             <h1>Travel Agency<span class="orange">.</span></h1>
             <nav>
                 <ul>
@@ -23,7 +23,7 @@
                     <li><a href="#steps">Destinations</a></li>
                     <li><a href="#possibilities">Circuits</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li id="adminAccess"><a href="#contact">Administrateur</a></li>
+                    <li id="adminAccess"><a href="admin-access.php">Administrateur</a></li>
                 </ul>
             </nav>
         </div>
@@ -115,7 +115,7 @@
                     mesure.
                 </p>
 
-                <form action="resultat.php" method="POST">
+                <form action="contact.php" method="POST">
                     <label for="name">Nom</label>
                     <input type="text" id="name" placeholder="Votre nom" name="name">
                     <label for="email">Email</label>
@@ -135,7 +135,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./scripts/form-control-index.js"></script>
 
 </body>
 

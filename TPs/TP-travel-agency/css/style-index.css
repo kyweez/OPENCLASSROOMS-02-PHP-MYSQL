@@ -69,22 +69,46 @@ small
 
 header 
 {
+    width: 100vw;
     height: 120px;   
 }
 header h1
 {
-    float: left;
+    width:40vw;
+    text-align: right;
     margin-top: 32px;
+    padding-right: 10vw;
+    float: left;
 }
 header nav
 {
-    float: right;   
-    margin-top: 50px;
+    width:50vw;
+    height: 50px;
+    margin: 35px 0;
+    float: right;
 }
 header nav ul li
 {
-    background-color: aqua;
+    height: 20px;
+    margin: 15px 0;
     display: inline-block;
+}
+header nav ul li:first-child
+{
+    margin-left: 5vw;
+}
+header nav ul li:last-child
+{
+    float: right;
+    padding-right: 1vw;
+}
+header nav ul li:last-child a
+{
+    color: gray;
+}
+header nav ul li:last-child a:hover
+{
+    color: #ff7a00;
 }
 header nav ul li a
 {
@@ -98,7 +122,7 @@ header nav ul li a
 #main-image
 {
     height: 580px;
-    background-image: url('images/main.jpg');
+    background-image: url('../images/main.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -155,16 +179,16 @@ header nav ul li a
 }
 #step-1
 {
-    background: url('images/steps-icon-1.png') no-repeat top center;
+    background: url('../images/steps-icon-1.png') no-repeat top center;
 }
 #step-2
 {
-    background: url('images/steps-icon-2.png') no-repeat top center;
+    background: url('../images/steps-icon-2.png') no-repeat top center;
     
 }
 #step-3
 {
-    background: url('images/steps-icon-3.png') no-repeat top center;
+    background: url('../images/steps-icon-3.png') no-repeat top center;
 }
 
 

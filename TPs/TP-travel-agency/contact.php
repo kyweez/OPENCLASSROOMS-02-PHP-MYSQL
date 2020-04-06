@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="styles_resultat.css" rel="stylesheet">
+    <link href="./css/style-contact.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel="stylesheet">
     <title>Travel Agency</title>
 </head>
