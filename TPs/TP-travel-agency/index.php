@@ -7,9 +7,9 @@
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel="stylesheet">
     <title>Travel Agency</title>
     <?php
-        if (isset($_GET['alreadyContacted']) and $_GET['alreadyContacted'] == 'yes') {
-            echo '<link href="styles_already_contacted.css" rel="stylesheet">';
-        }
+    if (isset($_GET['alreadyContacted']) and $_GET['alreadyContacted'] == 'yes') {
+        echo '<link href="styles_already_contacted.css" rel="stylesheet">';
+    }
     ?>
 </head>
 
@@ -23,6 +23,7 @@
                     <li><a href="#steps">Destinations</a></li>
                     <li><a href="#possibilities">Circuits</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li id="adminAccess"><a href="#contact">Administrateur</a></li>
                 </ul>
             </nav>
         </div>
