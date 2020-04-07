@@ -69,7 +69,7 @@ section div:first-child p a:hover{
     color: white;
 }
 section div:last-child{
-    background-color: tomato;
+    background-color: rgb(40, 156, 69);
     min-height: 20vh;
     display: flex;
     flex-direction: column;
@@ -84,9 +84,6 @@ section div:last-child h2{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-table, tr, th, td{
-    border: 1px solid black;
 }
 
 /*******FOOTER*******/

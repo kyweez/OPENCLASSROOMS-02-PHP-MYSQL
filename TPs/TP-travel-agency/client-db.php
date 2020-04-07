@@ -69,11 +69,11 @@
                         </div>
                         <div>
                             <?php
+                            //Generation d'une partie supplementaire uniquement accessible en tant qu'admin
                             if ($pseudo == 'admin') {
-                                //Generation de la requete pour afficher le tableau
+                                //Generation de la requete pour afficher le tableau des admins
                                 $request = $travelAgency_DB->query('SELECT * FROM admin_list ORDER BY id');
                             ?>
-
                                 <h2>Liste des administrateurs</h2>
                                 <div>
                                     <table>
@@ -86,6 +86,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
+                                            //Generation du tableau des a
                                             while ($data = $request->fetch()) {
                                             ?>
                                                 <tr>
@@ -93,6 +94,7 @@
                                                     <td><?php echo $data['pseudo']; ?></td>
                                                     <td>
                                                         <?php
+                                                        //formatage de la date en version fr
                                                         $format_us = $data['last_connection'];
                                                         $format_fr = implode('/',array_reverse  (explode('-',$format_us)));
                                                         echo  $format_fr;
