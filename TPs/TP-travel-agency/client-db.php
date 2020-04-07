@@ -19,7 +19,7 @@
     function print_html_section($stringToPrint, $error)
     {
         if ($error)
-            echo '<section><div ><p id="error-section">' . $stringToPrint . '</p><a href="admin-access.php">Revenir à la page précédente</a></div></section>';
+            echo '<section id="error-section"><div ><p>' . $stringToPrint . '</p><a href="admin-access.php">Revenir à la page précédente</a></div></section>';
     }
 
     function print_html_footer()
@@ -75,7 +75,7 @@
                                 $request = $travelAgency_DB->query('SELECT * FROM admin_list ORDER BY id');
                             ?>
                                 <h2>Liste des administrateurs</h2>
-                                <div>
+                                <div id="admin-div">
                                     <table>
                                         <thead>
                                             <tr>
@@ -96,7 +96,7 @@
                                                         <?php
                                                         //formatage de la date en version fr
                                                         $format_us = $data['last_connection'];
-                                                        $format_fr = implode('/',array_reverse  (explode('-',$format_us)));
+                                                        $format_fr = implode('/', array_reverse(explode('-', $format_us)));
                                                         echo  $format_fr;
                                                         ?>
                                                     </td>
@@ -135,7 +135,7 @@
                                                 <td>
                                                     <?php
                                                     $format_us = $data['date_of_request'];
-                                                    $format_fr = implode('/',array_reverse  (explode('-',$format_us)));
+                                                    $format_fr = implode('/', array_reverse(explode('-', $format_us)));
                                                     echo  $format_fr;
                                                     ?>
                                                 </td>

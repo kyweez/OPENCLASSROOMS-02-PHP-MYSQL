@@ -7,7 +7,6 @@
 body{
     min-height: 100vh;
     width: 100vw;
-    background-color: grey;
 }
 header, footer{
     background-color: #444;
@@ -43,20 +42,19 @@ header h1{
 
 /*******SECTION*******/
 section{
-    background-color: khaki;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 section div:first-child{
-    height: 6vh;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
 section div:first-child p{
-    padding: 1vh 2vw 1vh 2vw;
+    padding: 1vh 1vw 1vh 2vw;
 }
 section div:first-child p a{
     padding: 1vh 0.8vw;
@@ -69,7 +67,6 @@ section div:first-child p a:hover{
     color: white;
 }
 section div:last-child{
-    background-color: rgb(40, 156, 69);
     min-height: 20vh;
     display: flex;
     flex-direction: column;
@@ -77,7 +74,8 @@ section div:last-child{
     align-items: center;
 }
 section div:last-child h2{
-    background-color: rgb(17, 173, 17);
+    text-decoration: underline;
+    color: #444;
     margin: 1vh 0;
     height: 4vh;
     display: flex;
@@ -85,7 +83,74 @@ section div:last-child h2{
     justify-content: flex-start;
     align-items: center;
 }
+section div:last-child div{
+    margin: 1vh 0;
+    min-height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 4vh;
+}
+table {
+    border: medium solid #444;
+    border-collapse: collapse;
+}
+th {
+    border: thin solid #444;
+    border-bottom: medium solid #444;
+    padding: 1vh 1vw;
+    min-width: 15vw;
+    background-color: rgb(206, 202, 202);
+}
+th:nth-child(3), :last-child{
+    min-width: 10vw;
+}
+td {
+    border: thin solid #444;
+    padding: 5px;
+    text-align: center;
+    background-color: #ffe9d4;
+}
+#admin-div th:nth-child(1){
+    min-width: 3vw;
+}
+#admin-div th:nth-child(2){
+    min-width: 2vw;
+}
+#admin-div th:nth-child(3){
+    min-width: 10vw;
+}
+#error-section{
+    background-image: url(../images/restricted-access.png);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+#error-section p{
+    margin: 2vh 0;
+    padding: 0;
+    font-size: 2em;
+    color: red;
+}
+#error-section a{
+    margin: 2vh 0;
+    padding: 1vh 1vw;
+    font-size: 1.2em;
+    padding: 1.2vh 1vw;
+    background-color: rgb(206, 202, 202);
+    border-radius: 4px;
+    color: #444;
+    border: 1px solid #444;
 
+}
+#error-section a:hover{
+    background-color: #444;
+    border: 1px solid #444;
+    color: white;
+
+}
 /*******FOOTER*******/
 footer h1{
     width: 100vw;
@@ -106,3 +171,4 @@ footer h1{
     font-family: 'Crete Round', serif;
     color: #ff7a00;
 }
+

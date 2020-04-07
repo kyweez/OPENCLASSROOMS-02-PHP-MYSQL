@@ -37,8 +37,8 @@
             <div class="copyright">Copyright © Tous droits réservés.</div>
         </div>
     </footer>
-
-    <!--<script src="./scripts/form-control-admin.js"></script>-->
+    
+    <script src="./scripts/form-control-admin.js"></script>
 
 </body>
 
