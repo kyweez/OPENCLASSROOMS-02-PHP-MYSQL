@@ -27,10 +27,10 @@
         echo '<footer><div><h1>Travel Agency<span class="orange">.</span></h1><div class="copyright">Copyright © Tous droits réservés.</div></div></footer>';
     }
 
-    function connect_travel_agency_db()
+    function connect_to_db($dbName)
     {
         try {
-            return (new PDO('mysql:host=localhost;dbname=travel_agency;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)));
+            return (new PDO('mysql:host=localhost;dbname=' . $dbName . ';charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)));
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
             return (NULL);
@@ -43,50 +43,113 @@
         if (isset($_POST['id']) and isset($_POST['password'])) {
             //On teste si les valeurs sont vides (ce n'est pas cense arriver grace au JS)
             if ($_POST['id'] != NULL and $_POST['password'] != NULL) {
+                //Creation d'alias pour les $_POST
                 $pseudo = $_POST['id'];
                 $pwd = $_POST['password'];
-                $dataBase = connect_travel_agency_db();
-                $request = $dataBase->prepare('SELECT * FROM admin_list WHERE pseudo = ? AND pwd = ?');
+                $safe_pseudo = htmlspecialchars($pseudo);
+                $safe_pwd = htmlspecialchars($pwd);
+
+                //Connexion a la DB travel_agency
+                $travelAgency_DB = connect_to_db('travel_agency');
+
+                //Generation de la requete pour verifier l'acces utilisateur
+                $request = $travelAgency_DB->prepare('SELECT * FROM admin_list WHERE pseudo = ? AND pwd = ?');
                 $request->execute(array($pseudo, $pwd));
+
+                //Verification des credentials et generation de la page
                 if ($data = $request->fetch()) {
+                    //Fermeture de la requete, on n'en a plus besoin
+                    $request->closeCursor();
                     print_html_header('Panneau de contrôle');
-                    ?>
+    ?>
                     <section>
                         <div id="header-div">
-                            <p>Connecté sur le compte : <strong><?php echo htmlspecialchars($pseudo) ?></strong></p>
+                            <p>Connecté sur le compte : <strong><?php echo $safe_pseudo; ?></strong></p>
                             <p><a href="admin-access.php">Déconnexion</a></p>
                         </div>
-                        <?php
-                        if ($pseudo == 'admin') {
-                        ?>
-                            <div>
+                        <div>
+                            <?php
+                            if ($pseudo == 'admin') {
+                                //Generation de la requete pour afficher le tableau
+                                $request = $travelAgency_DB->query('SELECT * FROM admin_list ORDER BY id');
+                            ?>
+
                                 <h2>Liste des administrateurs</h2>
                                 <div>
                                     <table>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Pseudo</th>
-                                            <th>Dernière connexion</th>
-                                        </tr>
-                                        <?php
-                                        while ($data1 = $request->fetch()) {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $data1['id']; ?></td>
-                                            <td><?php echo $data1['pseudo']; ?></td>
-                                            <td><?php echo $data1['last_connection']; ?></td>
-                                        </tr>
-                                        <?php
-                                        }
-                                        ?>
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Pseudo</th>
+                                                <th>Dernière connexion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while ($data = $request->fetch()) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $data['id']; ?></td>
+                                                    <td><?php echo $data['pseudo']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        $format_us = $data['last_connection'];
+                                                        $format_fr = implode('/',array_reverse  (explode('-',$format_us)));
+                                                        echo  $format_fr;
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            //Fermeture de la requete, on n'en a plus besoin
+                                            $request->closeCursor();
+                                            ?>
+                                        </tbody>
                                     </table>
                                 </div>
+                            <?php
+                            }
+                            //Generation de la requete pour afficher le tableau
+                            $request = $travelAgency_DB->query('SELECT * FROM contact_request ORDER BY id');
+                            ?>
+                            <h2>Liste des demandes de contact</h2>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nom du client</th>
+                                            <th>Email du client</th>
+                                            <th>Date de la demande</th>
+                                            <th>Déjà contacté</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($data = $request->fetch()) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $data['name']; ?></td>
+                                                <td><?php echo $data['email']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    $format_us = $data['date_of_request'];
+                                                    $format_fr = implode('/',array_reverse  (explode('-',$format_us)));
+                                                    echo  $format_fr;
+                                                    ?>
+                                                </td>
+                                                <td><?php echo $data['already_contacted']; ?></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        //Fermeture de la requete, on n'en a plus besoin
+                                        $request->closeCursor();
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
-                        <?php
-                        }
-                        ?>
+                        </div>
                     </section>
-                <?php
+    <?php
                 } else {
                     print_html_header('Accès administrateur');
                     print_html_section('Mauvais identifiant ou password', true);
