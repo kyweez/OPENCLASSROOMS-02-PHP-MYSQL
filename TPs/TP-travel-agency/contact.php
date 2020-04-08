@@ -15,9 +15,9 @@
             <nav>
                 <ul>
                     <li><a href="./index.php">Accueil</a></li>
-                    <li><a href="./index.php/?alreadyContacted=yes#steps">Destinations</a></li>
-                    <li><a href="./index.php/?alreadyContacted=yes#possibilities">Circuits</a></li>
-                    <li><a href="./index.php/?alreadyContacted=yes#contact">Contact</a></li>
+                    <li><a href="./index.php?alreadyContacted=yes#steps">Destinations</a></li>
+                    <li><a href="./index.php?alreadyContacted=yes#possibilities">Circuits</a></li>
+                    <li><a href="./index.php?alreadyContacted=yes#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>

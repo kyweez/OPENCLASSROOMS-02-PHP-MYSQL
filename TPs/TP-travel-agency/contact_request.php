@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="./css/style-client-db.css" rel="stylesheet">
+    <link href="./css/style-contact-request.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel="stylesheet">
     <title>Travel Agency</title>
 </head>
@@ -19,7 +19,7 @@
     function print_html_section($stringToPrint, $error)
     {
         if ($error)
-            echo '<section id="error-section"><div ><p>' . $stringToPrint . '</p><a href="admin-access.php">Revenir à la page précédente</a></div></section>';
+            echo '<section id="error-section"><div ><p>' . $stringToPrint . '</p><a href="index.php#contact">Revenir à la page précédente</a></div></section>';
     }
 
     function print_html_footer()
@@ -40,9 +40,9 @@
     //On teste si la superglobale $_POST contient des donnees
     if (!empty($_POST)) {
         //On teste que les cases de de $_POST sont bien set
-        if (isset($_POST['id']) and isset($_POST['password'])) {
+        if (isset($_POST['name']) and isset($_POST['email'])) {
             //On teste si les valeurs sont vides (ce n'est pas cense arriver grace au JS)
-            if ($_POST['id'] != NULL and $_POST['password'] != NULL) {
+            if ($_POST['name'] != NULL and $_POST['email'] != NULL) {
                 //Creation d'alias pour les $_POST
                 $pseudo = $_POST['id'];
                 $pwd = $_POST['password'];
@@ -157,21 +157,21 @@
                     print_html_section('Mauvais identifiant ou password', true);
                 }
             }
-            //Sinon on affiche quelle valeur est vide (si les 2 le sont, par defaut on demande l'identifiant)
+            //Sinon on affiche quelle valeur est vide (si les 2 le sont, par defaut on demande le nom)
             else {
-                print_html_header('Accès administrateur');
-                print_html_section('Veuillez saisir votre ' . ($_POST['id'] == NULL ? 'identifiant' : 'password'), true);
+                print_html_header('Erreur lors de la saisie');
+                print_html_section('Veuillez saisir votre ' . ($_POST['name'] == NULL ? $_POST['email'] == NULL ? 'email et votre nom' : 'nom' : 'email'), true);
             }
         }
         //Sinon on affiche quelle case du $_POST n'est pas definie
         else {
-            print_html_header('Accès administrateur');
-            print_html_section('$_POST[' . (isset($_POST['id']) ? 'password' : 'id') . '] n\'est pas définie', true);
+            print_html_header('Erreur lors du transfert des données');
+            print_html_section('$_POST[' . (isset($_POST['name']) ? 'email' : 'name') . '] n\'est pas définie', true); 
         }
     }
     //Sinon on affiche une page d'erreur qui precise que $_POST n'est pas definie
     else {
-        print_html_header('Accès administrateur');
+        print_html_header('Erreur lors du transfert des données');
         print_html_section('La superglobale $_POST n\'est pas definie', true);
     }
     print_html_footer();

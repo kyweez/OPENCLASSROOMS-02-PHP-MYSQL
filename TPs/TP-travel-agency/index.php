@@ -93,7 +93,7 @@
                     Avez-vous pensé à consulter <a id="offre" href="#possibilities">nos offres commerciales</a> ?
 
                 </p>
-                <form action="resultat.php" method="POST">
+                <form>
                     <fieldset style="border:none;" disabled="disabled">
                         <label for="name">Nom</label>
                         <input type="text" id="name" placeholder="Votre nom" name="name">
@@ -135,7 +135,7 @@
         </div>
     </footer>
 
-    <script src="./scripts/form-control-index.js"></script>
+    <!--<script src="./scripts/form-control-index.js"></script>-->
 
 </body>
 
